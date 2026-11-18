@@ -15,7 +15,7 @@
 #   - notarytool credential profile (default "apple-notary")
 #   - Sparkle EdDSA key (generate_keys --account OpenDisplay) + SUPublicEDKey in App/Info.plist
 #   - Xcode 26+ selected and xcodegen installed
-#   - gh CLI authenticated, origin = github.com/<GH_REPO> (default dinhanhthi/OpenDisplay)
+#   - gh CLI authenticated, origin = github.com/<GH_REPO> (default Coprimal/OpenDisplay)
 #
 # Usage:
 #   scripts/ship.sh
@@ -27,7 +27,7 @@ set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO_ROOT"
 
-GH_REPO="${GH_REPO:-dinhanhthi/OpenDisplay}"
+GH_REPO="${GH_REPO:-Coprimal/OpenDisplay}"
 export GH_REPO
 
 BRANCH="$(git rev-parse --abbrev-ref HEAD)"
@@ -106,5 +106,5 @@ echo
 echo "========================================"
 echo "  OpenDisplay v$VERSION shipped!"
 echo "  GitHub : https://github.com/$GH_REPO/releases/tag/v$VERSION"
-echo "  Appcast: https://raw.githubusercontent.com/$GH_REPO/main/appcast.xml"
+echo "  Appcast: https://opendisplay.coprimal.dev/appcast.xml (after the pages.yml run)"
 echo "========================================"

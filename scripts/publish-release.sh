@@ -17,7 +17,7 @@
 #
 # Prereqs:
 #   - gh CLI installed and authenticated (gh auth login)
-#   - origin = github.com/<GH_REPO> (default dinhanhthi/OpenDisplay), release commit pushed to origin/main
+#   - origin = github.com/<GH_REPO> (default Coprimal/OpenDisplay), release commit pushed to origin/main
 #   - CHANGELOG.md at the repo root with a `## [X.Y.Z] - <date>` section for this version
 #     (CHANGELOG.md has a `## [0.1.0]` section; the first release sets its date to the ship date)
 #
@@ -31,7 +31,7 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 CHANGELOG="$REPO_ROOT/CHANGELOG.md"
-GH_REPO="${GH_REPO:-dinhanhthi/OpenDisplay}"
+GH_REPO="${GH_REPO:-Coprimal/OpenDisplay}"
 
 # --- 0. Args & tools -------------------------------------------------------
 YES=false

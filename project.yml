@@ -34,7 +34,7 @@ targets:
         INFOPLIST_FILE: App/Info.plist
         INFOPLIST_KEY_LSMinimumSystemVersion: "$(MACOSX_DEPLOYMENT_TARGET)"
         INFOPLIST_KEY_CFBundleDisplayName: "OpenDisplay"
-        INFOPLIST_KEY_NSHumanReadableCopyright: "© 2026 Anh-Thi DINH"
+        INFOPLIST_KEY_NSHumanReadableCopyright: "© 2026 Coprimal"
         MARKETING_VERSION: 0.1.0
         CURRENT_PROJECT_VERSION: 1
         ENABLE_HARDENED_RUNTIME: YES

@@ -6,8 +6,9 @@
 # release/appcast-archives/ that holds only the new zip plus a copy of the repo-root
 # appcast.xml (so older items keep their original download URLs, and the history
 # survives a deleted release/ folder), copies the result back to the repo root,
-# commits it as "chore(release): appcast vX.Y.Z", and pushes to main. The app reads it
-# from https://raw.githubusercontent.com/<GH_REPO>/main/appcast.xml (SUFeedURL).
+# commits it as "chore(release): appcast vX.Y.Z", and pushes to main. That push triggers
+# .github/workflows/pages.yml, which serves it at https://opendisplay.coprimal.dev/appcast.xml
+# (SUFeedURL). The root appcast.xml on main stays the source, and the feed of builds <= 0.1.0.
 # It requires branch main and HEAD == origin/main, so the push carries the appcast commit only.
 #
 # The zip must already be notarized + stapled (build-and-notarize.sh) and the GitHub
@@ -25,7 +26,7 @@
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-GH_REPO="${GH_REPO:-dinhanhthi/OpenDisplay}"
+GH_REPO="${GH_REPO:-Coprimal/OpenDisplay}"
 ARCHIVES="release/appcast-archives"
 
 ZIP="${1:-}"
@@ -93,5 +94,5 @@ git commit -m "chore(release): appcast v$VERSION" -- appcast.xml
 git push origin main
 
 echo
-echo "Done. appcast.xml pushed to main (raw.githubusercontent.com may cache it for ~5 min)."
-echo "  Verify: curl -fsSL https://raw.githubusercontent.com/$GH_REPO/main/appcast.xml | grep shortVersionString"
+echo "Done. appcast.xml pushed to main (pages.yml deploys it to opendisplay.coprimal.dev)."
+echo "  Verify: curl -fsSL https://opendisplay.coprimal.dev/appcast.xml | grep shortVersionString"

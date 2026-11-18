@@ -5,9 +5,10 @@ import SwiftUI
 
 /// What the About block shows and the DEBUG line logs.
 private enum AboutInfo {
-    static let author = "Anh-Thi DINH"
-    static let linkText = "github.com/dinhanhthi/OpenDisplay"
-    static let urlString = "https://github.com/dinhanhthi/OpenDisplay"
+    static let author = "Coprimal"
+    static let authorURLString = "https://coprimal.dev"
+    static let linkText = "github.com/Coprimal/OpenDisplay"
+    static let urlString = "https://github.com/Coprimal/OpenDisplay"
 
     /// "<CFBundleShortVersionString> (<CFBundleVersion>)".
     static var version: String {
@@ -91,8 +92,10 @@ private struct AboutBlock: View {
                     .font(.headline)
                 Text("Version \(AboutInfo.version)")
                     .foregroundStyle(.secondary)
-                Text("by \(AboutInfo.author)")
-                    .foregroundStyle(.secondary)
+                Button("by \(AboutInfo.author)") {
+                    if let url = URL(string: AboutInfo.authorURLString) { NSWorkspace.shared.open(url) }
+                }
+                .buttonStyle(.link)
                 Button(AboutInfo.linkText) {
                     if let url = URL(string: AboutInfo.urlString) { NSWorkspace.shared.open(url) }
                 }

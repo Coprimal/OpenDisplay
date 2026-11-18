@@ -43,6 +43,13 @@ Some code changes system state, so read it before you run it:
 - Private interfaces must fail softly: a missing function hides the control or falls back. It must never stop the launch.
 - Add a test in `Tests/OpenDisplayTests/` when you change a function in `App/Display/Logic/`.
 
+## Update feed
+
+- **Feed:** since 0.1.1, `SUFeedURL` is `https://opendisplay.coprimal.dev/appcast.xml`, served by GitHub Pages through `.github/workflows/pages.yml` (Settings > Pages > Source = "GitHub Actions") and a Cloudflare CNAME `opendisplay` → `coprimal.github.io` (DNS only). Its source is the root `appcast.xml` on `main`.
+- **Old builds:** 0.1.0 reads `https://raw.githubusercontent.com/dinhanhthi/OpenDisplay/main/appcast.xml`, which GitHub serves from `Coprimal/OpenDisplay` since the 2026-11 transfer.
+- **Never:** move or rename the root `appcast.xml`, change the Pages source, remove the custom domain or the DNS record, or create or fork a repo named `dinhanhthi/OpenDisplay` (it would take over the old path).
+- **Feed check:** `curl -sI https://opendisplay.coprimal.dev/appcast.xml` shows HTTP 200 without `location`, and both `curl -s https://opendisplay.coprimal.dev/appcast.xml | cmp - appcast.xml` and `curl -sL https://raw.githubusercontent.com/dinhanhthi/OpenDisplay/main/appcast.xml | cmp - appcast.xml` print nothing.
+
 ## Commits and pull requests
 
 - One-line commit messages: `<type>(<scope>): <summary>`, with type `feat`, `fix`, `docs`, `style`, `refactor`, `test` or `chore`.

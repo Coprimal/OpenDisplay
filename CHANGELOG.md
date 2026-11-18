@@ -6,6 +6,10 @@ All notable changes to OpenDisplay are listed here. `scripts/publish-release.sh`
 
 - When the menu bar icon is shown and a new version is available, the icon gets a small green download badge and the popover's "Check for Updates…" button reads "Update to OpenDisplay <version>…" instead of an alert popping up.
 
+### Changed
+
+- OpenDisplay moved to github.com/Coprimal/OpenDisplay, and updates now come from opendisplay.coprimal.dev. The About block shows Coprimal.
+
 ## [0.1.0] - 2026-11-11
 
 ### Added
